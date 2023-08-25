@@ -1,9 +1,9 @@
 package com.example.tentdemo.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "test_db")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
