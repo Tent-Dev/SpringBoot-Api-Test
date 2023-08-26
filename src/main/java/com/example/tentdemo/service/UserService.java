@@ -5,6 +5,7 @@ import com.example.tentdemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,12 @@ public class UserService {
 
     // Create a new user
     public User createUser(User user) {
-        return userRepository.save(user);
+        User createUser = new User();
+        createUser.setFirstName(user.getFirstName());
+        createUser.setLastName(user.getLastName());
+        createUser.setUserName(user.getUserName());
+        createUser.setCreatedDate(new Date());
+        return userRepository.save(createUser);
     }
 
     // Get all users

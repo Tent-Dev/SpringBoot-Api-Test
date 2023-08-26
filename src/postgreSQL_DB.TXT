@@ -17,8 +17,9 @@ CREATE SEQUENCE test_db.user_id_seq
 -- DROP TABLE test_db.users;
 
 CREATE TABLE test_db.users (
-	username varchar NULL,
-	firstname varchar NULL,
-	lastname varchar NULL,
-	id int4 NOT NULL DEFAULT nextval('test_db.user_id_seq'::regclass)
+	username varchar NOT NULL,
+	firstname varchar NOT NULL,
+	lastname varchar NOT NULL,
+	id int4 NOT NULL DEFAULT nextval('test_db.user_id_seq'::regclass),
+	created_date timestamp NOT NULL
 );
