@@ -32,8 +32,7 @@ public class UserService implements UserServiceInterface{
 
     // Get user by ID
     public Map<String, Object> getUserById(Long id) {
-        Map<String, Object> m = userRepository.findUserById(id);
-        return m;
+        return userRepository.findUserById(id);
     }
 
     // Update user
