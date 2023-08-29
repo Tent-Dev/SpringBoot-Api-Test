@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceInterface{
     @Autowired
     private UserRepository userRepository;
 
@@ -30,8 +31,9 @@ public class UserService {
     }
 
     // Get user by ID
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
+    public Map<String, Object> getUserById(Long id) {
+        Map<String, Object> m = userRepository.findUserById(id);
+        return m;
     }
 
     // Update user

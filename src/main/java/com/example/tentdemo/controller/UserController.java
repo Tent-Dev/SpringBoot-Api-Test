@@ -2,8 +2,11 @@ package com.example.tentdemo.controller;
 
 import com.example.tentdemo.entity.User;
 import com.example.tentdemo.service.UserService;
+import com.example.tentdemo.util.ResponseAPI;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,14 +21,14 @@ public class UserController {
 
     // Get all users
     @GetMapping(value = "/getUserList")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<Object> getAllUsers(HttpServletRequest req) {
+        return ResponseAPI.returnDataList(req, userService.getAllUsers());
     }
 
     // Get user by ID
     @GetMapping(value = "/getUserById/{id}")
-    public Optional<User> getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    public ResponseEntity<Object> getUserById(@PathVariable Long id, HttpServletRequest req) {
+        return ResponseAPI.returnDataObject(req,(Object) userService.getUserById(id));
     }
 
     // Create a new user
