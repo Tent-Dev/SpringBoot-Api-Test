@@ -33,8 +33,8 @@ public class UserController {
 
     // Create a new user
     @PostMapping(value = "/createNewUser", produces = MediaType.APPLICATION_JSON_VALUE)
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<?> createUser(@RequestBody User user, HttpServletRequest req) {
+        return ResponseAPI.returnDataObject(req, userService.createUser(user));
     }
 
     // Update user by ID
