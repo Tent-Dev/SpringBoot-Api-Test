@@ -39,8 +39,8 @@ public class UserController {
 
     // Update user by ID
     @PutMapping("/updateUserById/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        return userService.updateUser(id, userDetails);
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User userDetails, HttpServletRequest req) {
+        return ResponseAPI.returnDataObject(req, userService.updateUser(id, userDetails));
     }
 
     // Delete user by ID
